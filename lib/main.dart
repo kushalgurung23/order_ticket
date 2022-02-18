@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:order_ticket/controllers/open_ticket_controller.dart';
+import 'package:order_ticket/controllers/ticket_controller.dart';
 import 'package:order_ticket/controllers/product_controller.dart';
 import 'package:order_ticket/controllers/user_controller.dart';
 import 'package:order_ticket/views/open_ticket.dart';
 import 'package:order_ticket/views/open_ticket_details.dart';
 import 'package:order_ticket/views/product_screen.dart';
+import 'package:order_ticket/views/saved_ticket.dart';
 import 'package:order_ticket/views/user_profile.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => ProductController()),
     ChangeNotifierProvider(create: (context) => UserController()),
-    ChangeNotifierProvider(create: (context) => OpenTicketController()),
+    ChangeNotifierProvider(create: (context) => TicketController()),
   ], child: const MyApp()));
 }
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         OpenTicket.id: (context) => const OpenTicket(),
         UserProfile.id: (context) => const UserProfile(),
         OpenTicketDetails.id: (context) => const OpenTicketDetails(),
+        SavedTicket.id: (context) => const SavedTicket(),
       },
       initialRoute: ProductScreen.id,
     );

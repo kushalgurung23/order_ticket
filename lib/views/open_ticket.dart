@@ -18,17 +18,26 @@ class OpenTicket extends StatelessWidget {
       builder: (context, data, child) {
         return Scaffold(
           appBar: topAppBar(
-              context: context,
-              useTrailingGesture: false,
-              firstIcon: const Icon(
-                CupertinoIcons.back,
-                color: Colors.black,
+            context: context,
+            useTrailingGesture: false,
+            leadingFirstIcon: const Icon(
+              CupertinoIcons.back,
+              color: Colors.black,
+            ),
+            leadingFirstOnPress: () {
+              data.navigateBack(context: context);
+            },
+            trailingWidget: [
+              Center(
+                child: IconButton(
+                  splashRadius: SizeConfig.defaultSize * 2.5,
+                  onPressed: () {},
+                  icon: SvgPicture.asset("assets/svg/edit.svg"),
+                  color: Colors.black,
+                ),
               ),
-              firstOnPress: () {
-                data.navigateBack(context: context);
-              },
-              secondIcon: SvgPicture.asset("assets/svg/edit.svg"),
-              secondOnPress: () {}),
+            ],
+          ),
           body: OpenTicketList(data: data),
         );
       },

@@ -18,4 +18,9 @@ class UserController extends ChangeNotifier {
   void navigateBack({required BuildContext context}) {
     Navigator.pop(context);
   }
+
+  void navigatedNamed({required BuildContext context, required String name}) {
+    Navigator.pushNamed(context, name);
+  }
+
 }

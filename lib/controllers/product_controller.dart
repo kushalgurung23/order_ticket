@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:order_ticket/models/product_model.dart';
 import 'package:order_ticket/repositories/product_repository.dart';
 
@@ -31,7 +31,9 @@ class ProductController extends ChangeNotifier {
           productElement.orderedCount = 1;
           productElementList.add(productElement);
         }
-      } else {
+      }
+      // At first, else statement will be run, because productElementList will be empty
+      else {
         totalItemCount++;
         productElement.orderedCount = 1;
         productElementList.add(productElement);
@@ -41,7 +43,26 @@ class ProductController extends ChangeNotifier {
     }
   }
 
+  double getTotalAmount({required List<ProductElement> productElementList}) {
+    try {
+      double totalAmount = 0;
+      for (int i = 0; i < productElementList.length; i++) {
+        double lineTotal =
+            productElementList[i].price * productElementList[i].orderedCount;
+        totalAmount = totalAmount + lineTotal;
+      }
+      return totalAmount;
+    } finally {
+      notifyListeners();
+    }
+  }
+
   void navigatedNamed({required BuildContext context, required String name}) {
     Navigator.pushNamed(context, name);
+  }
+
+  void showSnackBar({required BuildContext context, required String text}) {
+    final snackBar = SnackBar(content: Text(text));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
