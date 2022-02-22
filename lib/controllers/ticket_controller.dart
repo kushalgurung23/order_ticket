@@ -36,11 +36,10 @@ class TicketController extends ChangeNotifier {
         totalItem: totalItem,
       );
       openTicketList.add(openTicket);
-
       ProductController productController =
           Provider.of<ProductController>(context, listen: false);
+      productController.productElementList = [];
       productController.totalItemCount = 0;
-      productController.productElementList.clear();
       productController.showSnackBar(
           context: context, text: "Order saved successfully");
       Navigator.pushNamedAndRemoveUntil(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_ticket/controllers/ticket_controller.dart';
 import 'package:order_ticket/helpers/size_configuration.dart';
+import 'package:order_ticket/views/saved_ticket_details.dart';
 import 'package:order_ticket/widgets/top_app_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -43,6 +44,17 @@ class SavedTicket extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: ListTile(
+                              onTap: () {
+                                print(data.openTicketList[index].itemOrderedList
+                                    .length);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SavedTicketDetails(
+                                                openTicket: data
+                                                    .openTicketList[index])));
+                              },
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: SizeConfig.defaultSize,
                                   horizontal: SizeConfig.defaultSize),
@@ -63,7 +75,7 @@ class SavedTicket extends StatelessWidget {
                               trailing: Text(
                                   "Rs. " +
                                       data.openTicketList[index].totalAmount
-                                          .toString(),
+                                          .toStringAsFixed(2),
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold)),
                             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:order_ticket/controllers/product_controller.dart';
 import 'package:order_ticket/controllers/user_controller.dart';
 import 'package:order_ticket/helpers/size_configuration.dart';
+import 'package:order_ticket/models/product_model.dart';
 import 'package:order_ticket/models/user_model.dart';
 import 'package:order_ticket/views/open_ticket_details.dart';
 import 'package:order_ticket/widgets/profile_component.dart';
@@ -38,22 +39,22 @@ class UserProfile extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   secondGestureOnPress: () {
-                    if(productControllerData.totalItemCount > 0) {
+                    if (productControllerData.totalItemCount > 0) {
                       data.navigateScreen(
                           context: context,
                           screen: OpenTicketDetails(
                             userId: user!.id,
                             userName: user!.name,
-                            productElementList:
-                            productControllerData.productElementList,
+                            productElementList: productControllerData.productElementList,
                             totalItem: productControllerData.totalItemCount,
                             totalAmount: productControllerData.getTotalAmount(
                                 productElementList:
-                                productControllerData.productElementList),
+                                    productControllerData.productElementList),
                           ));
-                    }
-                    else {
-                      productControllerData.showSnackBar(context: context, text: "No products to add to ticket");
+                    } else {
+                      productControllerData.showSnackBar(
+                          context: context,
+                          text: "No products to add to ticket");
                     }
                   }),
               body: user == null

@@ -7,6 +7,7 @@ import 'package:order_ticket/views/open_ticket.dart';
 import 'package:order_ticket/views/open_ticket_details.dart';
 import 'package:order_ticket/views/product_screen.dart';
 import 'package:order_ticket/views/saved_ticket.dart';
+import 'package:order_ticket/views/saved_ticket_details.dart';
 import 'package:order_ticket/views/user_profile.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         UserProfile.id: (context) => const UserProfile(),
         OpenTicketDetails.id: (context) => const OpenTicketDetails(),
         SavedTicket.id: (context) => const SavedTicket(),
+        SavedTicketDetails.id: (context) => const SavedTicketDetails()
       },
       initialRoute: ProductScreen.id,
     );

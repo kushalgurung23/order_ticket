@@ -125,7 +125,7 @@ class OpenTicketDetails extends StatelessWidget {
                       vertical: SizeConfig.defaultSize * 1.5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [const Text('Total'), Text('Rs. $totalAmount')],
+                    children: [const Text('Total'), Text('Rs. ${totalAmount!.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold),)],
                   ),
                 ),
                 Padding(
