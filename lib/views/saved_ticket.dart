@@ -45,8 +45,6 @@ class SavedTicket extends StatelessWidget {
                             ),
                             child: ListTile(
                               onTap: () {
-                                print(data.openTicketList[index].itemOrderedList
-                                    .length);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
